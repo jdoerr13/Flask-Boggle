@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- variables used on page: guess - with both js & app.py; then ID's for JS: score -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's Play Boggle</title>
+    <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+    <h1>Boggle Board</h1>
+    <table class="board">
+        {% for row in board %}
+        <tr>
+            {% for letter in row %}
+            <td>{{ letter }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+
+
+    <p>High Score: 
+        <b class="high-score">{{ highscore }}...</b> 
+        in {{ nplays }} plays
+    </p>
+    
+
+  <p>
+    Score: <b class="score">0</b>
+    <div>Seconds Left: <b class="timer"></b></div>
+  </p>
+
+    <form id="guessForm" method="POST">
+        <label for="guess">Your Guess:</label>
+        <input type="text" id="guessid" name="guess" required>
+        <button type="submit">Submit Guess</button>
+    </form>
+
+    <p id="result"></p>
+
+    <div>
+        <h3>Guessed Words:</h3>
+        <ul id="guessedList"></ul>
+        <button id="clearButton">Clear List</button>
+      </div>
+
+<script src="/static/app.js"></script>    
+<script src="https://unpkg.com/axios@0.19.0/dist/axios.js"></script>
+<script src="http://unpkg.com/jquery"></script>
+</body>
+</html>
